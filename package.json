@@ -1,6 +1,6 @@
 {
   "name": "@glitchr/clipboardjs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Clipboard JS library",
   "main": "index.js",
   "repository": {
