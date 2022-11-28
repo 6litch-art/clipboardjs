@@ -10,7 +10,7 @@
 
 })(this, function () {
 
-    var Clipboard = {};
+    var Clipboard = window.Clipboard = {};
         Clipboard.version = '0.1.0';
 
     var Settings = Clipboard.settings = {

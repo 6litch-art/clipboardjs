@@ -1,8 +1,8 @@
 {
   "name": "@glitchr/clipboardjs",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Clipboard JS library",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": {
     "url": "ssh://git@gitlab.glitchr.dev:public-repository/javascript/clipboardjs.git",
     "type": "git"
