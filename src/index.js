@@ -10,16 +10,16 @@
 
 })(this, function () {
 
-    var Clipboard = window.Clipboard = {};
-        Clipboard.version = '0.1.0';
+    const Clipboard = window.Clipboard = {};
+          Clipboard.version = '0.1.0';
 
-    var Settings = Clipboard.settings = {
+    const Settings = Clipboard.settings = {
         "containers": "[data-clipboard],[data-clipboard-copy], [data-clipboard-cut]",
         "targets": "[data-clipboard-paste]"
     };
 
-    var debug = false;
-    var ready = false;
+    let debug = false;
+    let ready = false;
 
     Clipboard.reset = function(el = undefined) {
 
@@ -42,21 +42,21 @@
     };
 
     Clipboard.get = function(key) {
-    
-        if(key in Clipboard.settings) 
+
+        if(key in Clipboard.settings)
             return Clipboard.settings[key];
 
         return null;
     };
 
     Clipboard.set = function(key, value) {
-    
+
         Clipboard.settings[key] = value;
         return this;
     };
 
     Clipboard.add = function(key, value) {
-    
+
         if(! (key in Clipboard.settings))
             Clipboard.settings[key] = [];
 
@@ -70,8 +70,8 @@
 
         if(key in Clipboard.settings) {
 
-            Clipboard.settings[key] = Clipboard.settings[key].filter(function(setting, index, arr){ 
-                return value != setting;
+            Clipboard.settings[key] = Clipboard.settings[key].filter(function(setting) {
+                return value !== setting;
             });
 
             return Clipboard.settings[key];
@@ -82,7 +82,7 @@
 
     Clipboard.configure = function (options) {
 
-        var key, value;
+        let key, value;
         for (key in options) {
             value = options[key];
             if (value !== undefined && options.hasOwnProperty(key)) Settings[key] = value;
@@ -100,8 +100,8 @@
         $(Clipboard.get("containers")).on("click.clipboard", function(e) {
 
             e.preventDefault();
-            var container = e.currentTarget;
-            
+            const container = e.currentTarget;
+
             switch(container.tagName) {
 
                 case "A":
@@ -109,8 +109,7 @@
                     break;
 
                 default:
-                    navigator.clipboard.writeText(container.val());
-                    console.log(container.val());
+                    navigator.clipboard.writeText($(container).val() ?? container.value ?? '');
                     break
             }
         });
@@ -119,6 +118,6 @@
 
         return this;
     }
-    
+
     return Clipboard;
 });
